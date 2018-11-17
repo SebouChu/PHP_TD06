@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} | Admin</title>
+    <link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'admin/layout/header.html.twig' %}
+
+    {% block body %}{% endblock %}
+  </body>
+</html>

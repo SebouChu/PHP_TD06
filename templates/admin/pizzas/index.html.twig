@@ -1,0 +1,38 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Pizzas{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1>Pizzas</h1>
+
+  <p><a href="{{ path('admin_new_pizza') }}" class="btn btn-success" type="button">Add Pizza</a></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pizza in pizzas %}
+      <tr>
+        <td>{{ pizza.id }}</td>
+        <td>{{ pizza }}</td>
+        <td>{{ pizza.price }} €</td>
+        <td>{{ pizza.description }}</td>
+        <td>
+          <a href="#" class="btn btn-info" type="button">Show</a>
+          <a href="#" class="btn btn-warning" type="button">Edit</a>
+          <a href="#" class="btn btn-danger" type="button">Destroy</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

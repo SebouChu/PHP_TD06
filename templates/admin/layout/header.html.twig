@@ -1,0 +1,16 @@
+<header>
+  <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-brand">
+        <a class="navbar-link" href="{{ path('admin_home') }}">PizzAdmin</a>
+      </div>
+      <div class="navbar-contents">
+          <ul class="nav navbar-nav">
+              <li><a href="{{ path('admin_pizzas') }}">Pizzas</a></li>
+          </ul>
+      </div>
+      <p class="navbar-text navbar-right">
+        Signed in as {{ app.user }}
+        (<a class="navbar-link" href="{{ path('logout') }}">Logout</a>)
+      </p>
+  </nav>
+</header>

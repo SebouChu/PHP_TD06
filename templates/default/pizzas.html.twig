@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Les pizzas{% endblock %}
+
+{% block body %}
+<section>
+    <article>
+        <h2>Les pizzas</h2>
+        <p>
+            Nous avez ces pizzas au menu
+        </p>
+        <ul>
+          {% for pizza in pizzas %}
+          <li>
+            {{ pizza.name }} ({{ pizza.ingredients|join(", ") }})
+          </li>
+          {% endfor %}
+        </ul>
+    </article>
+</section>
+{% endblock %}

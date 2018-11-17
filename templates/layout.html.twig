@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} | Pizza</title>
+    <link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
+  </head>
+  <body>
+    {% include "layout/header.html.twig" %}
+
+    {% block body %}{% endblock %}
+  </body>
+</html>
