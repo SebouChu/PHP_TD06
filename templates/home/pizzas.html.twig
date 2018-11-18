@@ -12,7 +12,7 @@
         <ul>
           {% for pizza in pizzas %}
           <li>
-            {{ pizza.name }} ({{ pizza.ingredients|join(", ") }})
+            {{ pizza.name }} ({{ pizza.ingredients|join(", ") }}) : {{ pizza.price }} €
           </li>
           {% endfor %}
         </ul>

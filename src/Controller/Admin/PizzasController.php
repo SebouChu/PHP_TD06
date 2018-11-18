@@ -1,42 +1,36 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+use App\Entity\Ingredient;
 use App\Entity\Pizza;
 use App\Form\PizzaType;
 
 /**
- * @Route("/admin", name="admin_")
+ * @Route("/admin/pizzas", name="admin_")
  */
-class AdminController extends Controller
+class PizzasController extends Controller
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="pizzas")
      */
     public function indexAction()
     {
-        return $this->render('admin/index.html.twig');
+      $em = $this->get('doctrine')->getManager();
+
+      return $this->render('admin/pizzas/index.html.twig', [
+          'pizzas' => $em->getRepository(Pizza::class)->findAll()
+      ]);
     }
 
     /**
-     * @Route("/pizzas", name="pizzas")
-     */
-    public function pizzasAction()
-    {
-        $em = $this->get('doctrine')->getManager();
-
-        return $this->render('admin/pizzas/index.html.twig', [
-            'pizzas' => $em->getRepository(Pizza::class)->findAll()
-        ]);
-    }
-
-    /**
-     * @Route("/pizzas/new", name="new_pizza")
+     * @Route("/new", name="new_pizza")
      */
     public function newPizzaAction(Request $request)
     {

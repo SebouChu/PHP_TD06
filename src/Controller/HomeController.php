@@ -9,14 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Ingredient;
 use App\Entity\Pizza;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
     /**
      * @Route("/", name="home")
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('home/index.html.twig');
     }
 
     /**
@@ -26,13 +26,13 @@ class DefaultController extends Controller
     {
         $em = $this->get('doctrine')->getManager();
 
-        return $this->render('default/pizzas.html.twig', [
+        return $this->render('home/pizzas.html.twig', [
             'pizzas' => $em->getRepository(Pizza::class)->findAll()
         ]);
     }
 
     /**
-     * @Route("/pizzas/insert", name="add_pizza")
+     * @Route("/pizzas/insert", name="insert_pizza")
      */
     public function insertPizzaAction()
     {
