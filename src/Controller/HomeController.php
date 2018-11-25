@@ -14,7 +14,7 @@ class HomeController extends Controller
     /**
      * @Route("/", name="home")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('home/index.html.twig');
     }
@@ -22,7 +22,7 @@ class HomeController extends Controller
     /**
      * @Route("/pizzas", name="pizzas_list")
      */
-    public function pizzasAction()
+    public function pizzas()
     {
         $em = $this->get('doctrine')->getManager();
 
@@ -34,7 +34,7 @@ class HomeController extends Controller
     /**
      * @Route("/pizzas/insert", name="insert_pizza")
      */
-    public function insertPizzaAction()
+    public function insertPizza()
     {
       $em = $this->get('doctrine')->getManager();
 

@@ -20,7 +20,7 @@ class PizzasController extends Controller
     /**
      * @Route("/", name="pizzas")
      */
-    public function indexAction()
+    public function index()
     {
       $em = $this->get('doctrine')->getManager();
 
@@ -30,9 +30,19 @@ class PizzasController extends Controller
     }
 
     /**
+     * @Route("/{id}", name="pizza")
+     */
+    public function show(Pizza $pizza)
+    {
+      return $this->render('admin/pizzas/show.html.twig', [
+          'pizza' => $pizza,
+      ]);
+    }
+
+    /**
      * @Route("/new", name="new_pizza")
      */
-    public function newPizzaAction(Request $request)
+    public function new(Request $request)
     {
         $pizza = new Pizza;
 
@@ -53,6 +63,31 @@ class PizzasController extends Controller
 
         return $this->render('admin/pizzas/new.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="edit_pizza")
+     */
+    public function edit(Request $request, Pizza $pizza)
+    {
+        $form = $this->createForm(PizzaType::class, $pizza);
+        $form->add('save', SubmitType::class, array('label' => 'Update Pizza'));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+          $this->get('doctrine')->getManager()->flush();
+
+          return $this->redirectToRoute('admin_pizza', [
+            'id' => $pizza->getId()
+          ]);
+        }
+
+        return $this->render('admin/pizzas/edit.html.twig', [
+            'form' => $form->createView(),
+            'pizza' => $pizza,
         ]);
     }
 }

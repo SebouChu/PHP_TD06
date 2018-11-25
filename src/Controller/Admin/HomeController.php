@@ -17,7 +17,7 @@ class HomeController extends Controller
     /**
      * @Route("/", name="home")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('admin/home/index.html.twig');
     }

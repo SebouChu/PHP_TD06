@@ -26,8 +26,8 @@
         <td>{{ pizza.price }} €</td>
         <td>{{ pizza.description }}</td>
         <td>
-          <a href="#" class="btn btn-info" type="button">Show</a>
-          <a href="#" class="btn btn-warning" type="button">Edit</a>
+          <a href="{{ path('admin_pizza', { 'id': pizza.id }) }}" class="btn btn-info" type="button">Show</a>
+          <a href="{{ path('admin_edit_pizza', { 'id': pizza.id }) }}" class="btn btn-warning" type="button">Edit</a>
           <a href="#" class="btn btn-danger" type="button">Destroy</a>
         </td>
       </tr>
